@@ -169,8 +169,8 @@ function _allocate_symmetric_exact_propagators(fpi::FermionPathIntegral{T,E}) wh
         # allocate propagator for the current imaginary time slice
         expmΔτKo2_l = Matrix{T}(I, N, N)
         exppΔτKo2_l = Matrix{T}(I, N, N)
-        expmΔτV_l = ones(E, N)
-        B_l = SymExactPropagator(expmΔτV_l, expmΔτKo2_l, exppΔτKo2_l)
+        expmΔτV_l = ones(T, N)
+        B_l = SymExactPropagator{T, E}(expmΔτV_l, expmΔτKo2_l, exppΔτKo2_l)
         push!(B, B_l)
     end
 
@@ -191,8 +191,8 @@ function _allocate_asymmetric_exact_propagators(fpi::FermionPathIntegral{T,E}) w
         # allocate propagator for the current imaginary time slice
         expmΔτK_l = Matrix{T}(I, N, N)
         exppΔτK_l = Matrix{T}(I, N, N)
-        expmΔτV_l = ones(E, N)
-        B_l = AsymExactPropagator(expmΔτV_l, expmΔτK_l, exppΔτK_l)
+        expmΔτV_l = ones(T, N)
+        B_l = AsymExactPropagator{T, E}(expmΔτV_l, expmΔτK_l, exppΔτK_l)
         push!(B, B_l)
     end
 
@@ -221,8 +221,8 @@ function _allocate_symmetric_checkerboard_propagators(fpi::FermionPathIntegral{T
 
         # allocate propagator for current imaginary time slice
         expmΔτKo2_l = CheckerboardMatrix(expnΔτKo2, new_matrix=true)
-        expmΔτV_l = ones(E, N)
-        B_l = SymChkbrdPropagator(expmΔτV_l, expmΔτKo2_l)
+        expmΔτV_l = ones(T, N)
+        B_l = SymChkbrdPropagator{T, E}(expmΔτV_l, expmΔτKo2_l)
         push!(B, B_l)
     end
 
@@ -251,8 +251,8 @@ function _allocate_asymmetric_checkerboard_propagators(fpi::FermionPathIntegral{
 
         # allocate propagator for current imaginary time slice
         expmΔτK_l = CheckerboardMatrix(expnΔτK, new_matrix=true)
-        expmΔτV_l = ones(E, N)
-        B_l = AsymChkbrdPropagator(expmΔτV_l, expmΔτK_l)
+        expmΔτV_l = ones(T, N)
+        B_l = AsymChkbrdPropagator{T, E}(expmΔτV_l, expmΔτK_l)
         push!(B, B_l)
     end
 
